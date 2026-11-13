@@ -1,0 +1,47 @@
+schema_version: 1
+name: zigbee2mqtt
+display_name: Zigbee (via Zigbee2MQTT)
+description: Zigbee device control via Zigbee2MQTT. Discovers and controls switches, lights, locks, thermostats and covers over your Zigbee mesh.
+version: 0.1.0
+author:
+  github: community
+keywords:
+  - zigbee
+  - zigbee2mqtt
+  - z2m
+  - smart home
+  - light
+  - switch
+  - lock
+  - thermostat
+categories:
+  - smart-home
+platforms: []
+
+components:
+  - type: device_protocol
+    name: zigbee2mqtt
+    path: device_families/zigbee2mqtt/protocol.py
+  - type: agent
+    name: zigbee2mqtt
+    path: agents/zigbee2mqtt/agent.py
+
+packages:
+  - name: websockets
+
+secrets:
+  - key: ZIGBEE2MQTT_URL
+    scope: integration
+    value_type: string
+    description: "Zigbee2MQTT frontend WebSocket URL (e.g., ws://10.0.0.50:8080)"
+    is_sensitive: false
+    friendly_name: "Zigbee2MQTT URL"
+  - key: ZIGBEE2MQTT_AUTH_TOKEN
+    scope: integration
+    value_type: string
+    description: "Zigbee2MQTT frontend auth_token (leave empty if not set)"
+    is_sensitive: true
+    friendly_name: "Zigbee2MQTT Auth Token"
+
+min_jarvis_version: "0.9.0"
+license: MIT
